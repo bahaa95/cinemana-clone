@@ -1,0 +1,28 @@
+// prevent text selection
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*
+* add overlay for div that wrap the image 
+* and prevent download and selection for image
+*/
+.image-overlay {
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}

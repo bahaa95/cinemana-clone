@@ -1,0 +1,124 @@
+/**
+ * make the style work cross browsers
+*/
+@mixin crossBrowser($property, $value) {
+  $prefixes: webkit, moz, ms, o;
+
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+}
+
+@mixin transform($value) {
+  transform: $value;
+  @include crossBrowser(transform, $value);
+  will-change: transform;
+  @include crossBrowser(will-change, transform);
+}
+
+@mixin transition($value) {
+  transition: $value;
+  @include crossBrowser(transition, $value);
+}
+
+@mixin boxShadow($value) {
+  box-shadow: $value;
+  @include crossBrowser(box-shadow, $value);
+}
+
+// responsive design mixins
+@mixin xs() {
+  @media screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin sm() {
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin md() {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin xl() {
+  @media screen and (min-width: 1200px) and (max-width: 1399px) {
+    @content;
+  }
+}
+
+@mixin xxl() {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin max-w-xs() {
+  @media screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin max-w-sm() {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin max-w-md() {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin max-w-lg() {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin max-w-xl() {
+  @media screen and (max-width: 1399px) {
+    @content;
+  }
+}
+
+@mixin min-w-sm() {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin min-w-md() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin min-w-lg() {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin min-w-xl() {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin animation($animation) {
+  animation: $animation;
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+}

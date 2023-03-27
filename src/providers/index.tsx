@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from 'src/lib/auth';
 import { toastifyProps } from 'src/lib/notify';
 import { queryClient } from 'src/lib/react-query';
-import { isDevelopment } from 'src/utils/indwx';
+import { isDevelopment } from 'src/utils/isDevelopment';
 
 type AppProviderProps = {
   children: React.ReactNode;

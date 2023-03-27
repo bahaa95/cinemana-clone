@@ -9,3 +9,5 @@ export * from './stack';
 export * from './stackItem';
 export * from './image';
 export * from './buttton';
+export * from './footer';
+export * from './outerLink';

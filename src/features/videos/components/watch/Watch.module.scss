@@ -1,0 +1,40 @@
+@import 'src/lib/styles/fonts.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/mixin.scss';
+
+.watch {
+  padding: 0.6em 1.5em;
+  @include transition(0.2s background-color);
+
+  &:hover {
+    background-color: $white;
+
+    .title,
+    .icon {
+      color: $red;
+      font-weight: 600;
+    }
+  }
+
+  @include max-w-md() {
+    padding: 0.3em 0.9em;
+  }
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-family: $source_sans_pro;
+  font-weight: 500;
+}
+
+.icon,
+.title {
+  @include transition(0.2s color);
+  @include max-w-md() {
+    font-size: 0.9rem;
+  }
+}

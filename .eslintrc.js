@@ -52,6 +52,7 @@ module.exports = {
             alphabetize: { order: 'asc', caseInsensitive: true },
           },
         ],
+        'import/no-unresolved': [2, { caseSensitive: false }],
         'import/default': 'off',
         'import/no-named-as-default-member': 'off',
         'import/no-named-as-default': 'off',
@@ -59,6 +60,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
 
         'jsx-a11y/anchor-is-valid': 'off',
+        'no-empty-pattern': 'off',
 
         '@typescript-eslint/no-unused-vars': ['error'],
 

@@ -1,0 +1,1 @@
+export { getYear } from './getYear';

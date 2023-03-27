@@ -1,0 +1,17 @@
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.title {
+  font-family: $source_sans_pro;
+  padding: 0em 0.2em;
+  background: $yellow;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-right: 0.3em;
+  border-radius: 0.5em;
+}
+
+.stars {
+  font-family: $source_sans_pro;
+  font-size: 0.8rem;
+}

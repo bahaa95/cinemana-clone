@@ -1,5 +1,4 @@
-import { Box } from '@chakra-ui/react';
-import { Toolbar } from 'src/components';
+import { Box, Toolbar, Footer } from 'src/components';
 
 type Props = {
   children?: React.ReactNode;
@@ -13,6 +12,9 @@ export const MainLayout = (props: Props) => {
         <Toolbar />
       </Box>
       <Box>{children}</Box>
+      <Box>
+        <Footer />
+      </Box>
     </Box>
   );
 };

@@ -1,7 +1,12 @@
+import { AppProvider } from 'src/providers';
+import { AppRoutes } from 'src/routes';
+
 const App = () => {
   return (
     <div className="App">
-      <h1>Cinemana</h1>
+      <AppProvider>
+        <AppRoutes />
+      </AppProvider>
     </div>
   );
 };

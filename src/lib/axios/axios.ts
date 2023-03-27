@@ -1,6 +1,6 @@
 import Axios from 'axios';
-import { API_URL } from '@/config';
-import { notify } from '@/lib/notify';
+import { API_URL } from 'src/config';
+import { notify } from 'src/lib/notify';
 
 export const axios = Axios.create({
   baseURL: API_URL,

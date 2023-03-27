@@ -1,7 +1,7 @@
 import Axios from 'axios';
-import { API_URL } from '@/config';
-import { useAuth, useRefreshToken, isValidToken, RefreshTokenResponse } from '@/lib/auth';
-import { notify } from '@/lib/notify';
+import { API_URL } from 'src/config';
+import { useAuth, useRefreshToken, isValidToken, RefreshTokenResponse } from 'src/lib/auth';
+import { notify } from 'src/lib/notify';
 
 export const useAxiosPrivate = () => {
   const { auth } = useAuth();

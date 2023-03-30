@@ -1,0 +1,170 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.video {
+  padding: 1em;
+}
+
+.section {
+  margin-bottom: 2em;
+  padding: 0em 1em;
+}
+
+.info {
+  padding: 0.8em;
+  background-color: $dark-100;
+  margin-bottom: 4em;
+
+  @include max-w-xs() {
+    background-color: $dark-200;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include max-w-xs() {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+    }
+  }
+}
+
+.videoImageContainer {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+  }
+
+  @include min-w-sm() {
+    margin-right: 1.5em;
+    min-width: 10em;
+    width: 10em;
+    height: 15em;
+  }
+
+  @include min-w-lg() {
+    min-width: 18.5em;
+    width: 18.5em;
+    height: 25em;
+  }
+
+  @include max-w-xs() {
+    width: 100%;
+    height: 15em;
+  }
+
+  .videoImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.detailes {
+  @include min-w-sm() {
+    max-width: 70%;
+    padding-top: 1em;
+  }
+
+  @include min-w-xl() {
+    max-width: 80%;
+    padding-top: 1em;
+  }
+}
+
+.title {
+  font-family: $source_sans_pro;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-bottom: 0.3em;
+
+  @include min-w-md() {
+    font-size: 1.5rem;
+  }
+
+  @include sm() {
+    font-size: 1.2rem;
+  }
+
+  @include max-w-xs() {
+    padding-top: 1em;
+  }
+}
+
+.year {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.categories {
+  padding-left: 1em;
+  font-size: 0.8rem;
+
+  .category {
+    &:hover {
+      color: $white;
+    }
+
+    &:not(:last-child) {
+      &::after {
+        content: ',';
+      }
+    }
+  }
+}
+
+.actions {
+  padding: 0.5em 0em;
+  font-size: 0.8rem;
+  font-family: $source_sans_pro;
+
+  @include min-w-md() {
+    font-size: 0.9rem;
+  }
+
+  .actionButton {
+    &:not(:last-child) {
+      padding-right: 0.5em;
+    }
+
+    & > p {
+      padding-left: 0.3em;
+    }
+
+    &:hover {
+      color: $gray;
+    }
+  }
+}
+
+.description {
+  font-size: 0.8rem;
+  font-family: $source_sans_pro;
+  padding-bottom: 0.3em;
+
+  @include min-w-md() {
+    font-size: 0.9rem;
+  }
+}
+
+.sctionTitle {
+  padding: 1em 0em 0em 0em;
+  font-weight: 500;
+  font-family: $source_sans_pro;
+  font-size: 1.2rem;
+
+  @include min-w-md() {
+    font-size: 1.5rem;
+  }
+}

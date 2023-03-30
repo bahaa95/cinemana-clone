@@ -1,0 +1,13 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.title {
+  padding: 1em 0em 0em 0em;
+  font-weight: 500;
+  font-family: $source_sans_pro;
+  font-size: 1.1rem;
+
+  @include min-w-md() {
+    font-size: 1.3rem;
+  }
+}

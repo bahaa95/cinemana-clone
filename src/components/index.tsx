@@ -11,3 +11,7 @@ export * from './image';
 export * from './buttton';
 export * from './footer';
 export * from './outerLink';
+export * from './helmet';
+export * from './wrap';
+export * from './wrapItem';
+export * from './tabs';

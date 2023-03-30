@@ -1,4 +1,4 @@
-import { MainLayout, Main, Section } from 'src/components';
+import { MainLayout, Main, Section, Helmet } from 'src/components';
 import { useGetSpecialVideos, useGetGroups } from '../../api';
 import { Group } from '../../components/group';
 import { SpecialVideos } from '../../components/specialVideos';
@@ -14,6 +14,7 @@ export const Home = () => {
 
   return (
     <MainLayout>
+      <Helmet title="home" />
       <Main className={`bg-dark-200`}>
         <Section>
           <SpecialVideos specialVideos={specialVideosQuery.data || []} />

@@ -1,1 +1,2 @@
-export { getYear } from './getYear';
+export * from './getYear';
+export * from './formatDuration';

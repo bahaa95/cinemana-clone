@@ -1,0 +1,34 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.title {
+  font-family: $source_sans_pro;
+  font-size: 0.8rem;
+
+  @include min-w-md() {
+    font-size: 0.9rem;
+  }
+}
+
+.name {
+  color: $primary;
+  font-size: 0.8rem;
+
+  &:not(:last-child) {
+    margin-right: 0.2em;
+    &::after {
+      content: ',';
+    }
+  }
+
+  @include min-w-md() {
+    font-size: 0.9rem;
+  }
+
+  .link {
+    &:hover {
+      color: $gray;
+    }
+  }
+}

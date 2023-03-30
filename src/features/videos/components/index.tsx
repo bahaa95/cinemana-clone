@@ -4,3 +4,4 @@ export * from './videos';
 export * from './IMDB';
 export * from './videoCard';
 export * from './watch';
+export * from './seasons';

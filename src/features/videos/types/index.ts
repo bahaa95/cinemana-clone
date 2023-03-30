@@ -20,6 +20,21 @@ export interface Video {
   actors: Person[];
   directors: Person[];
   writers: Person[];
+  seasons?: Season[];
+}
+
+export interface Season {
+  _id: string;
+  season: number;
+  episodes: Episode[];
+}
+
+export interface Episode {
+  _id: string;
+  episode: number;
+  duration: number;
+  video: string;
+  image: File;
 }
 
 export interface Category {

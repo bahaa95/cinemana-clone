@@ -1,0 +1,42 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.staff {
+  padding: 1.5em 1em;
+  min-height: 100vh;
+}
+
+.section {
+  padding-bottom: 1.5em;
+}
+
+.imageContainer {
+  @include min-w-md() {
+    width: 4em;
+    height: 5.5em;
+  }
+
+  @include max-w-sm() {
+    width: 3.5em;
+    height: 5em;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.name {
+  font-family: $source_sans_pro;
+  font-weight: 600;
+
+  @include min-w-md() {
+    font-size: 1.4rem;
+  }
+
+  @include max-w-sm() {
+    font-size: 1.3rem;
+  }
+}

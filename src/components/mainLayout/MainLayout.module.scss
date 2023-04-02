@@ -1,0 +1,49 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.container {
+  width: 100%;
+
+  @include min-w-lg() {
+    margin-left: 15em;
+    width: calc(100% - 15em);
+  }
+}
+
+.toolbar {
+  width: 100%;
+
+  @include min-w-lg() {
+    width: calc(100% - 15em);
+  }
+}
+
+.sidebar {
+  @include transition(left 0.5s);
+
+  @include min-w-lg() {
+    width: 15em;
+    left: 0em;
+  }
+
+  @include max-w-md() {
+    width: 16em;
+    left: -17em;
+  }
+
+  @include max-w-xs() {
+    width: 20em;
+    left: -21em;
+  }
+}
+
+.showSidebar {
+  @include max-w-md() {
+    left: 0em;
+  }
+}
+
+.children {
+  padding-top: 3em;
+}

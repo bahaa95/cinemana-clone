@@ -1,0 +1,79 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.sidebar {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.sidebarContainer {
+  min-height: 30em;
+}
+
+.header {
+  padding: 1.2em 1.5em;
+
+  .headerText {
+    font-family: $source_sans_pro;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .logoContainer {
+    width: 2.1em;
+  }
+
+  .hideSidebar {
+    color: $gray;
+    font-size: 1.3rem;
+
+    @include min-w-lg() {
+      display: none;
+    }
+  }
+}
+
+.hamburger {
+  z-index: -1;
+  left: 1em;
+  top: 1em;
+
+  @include min-w-lg() {
+    display: none;
+  }
+}
+
+.nav {
+  padding: 2em 0em;
+  .navLink {
+    padding: 0.9em 0.5em 0.8em 1.5em;
+    font-family: $source_sans_pro;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    .icon {
+      font-size: 1.3rem;
+    }
+
+    &:hover {
+      background-color: $dark-300;
+    }
+  }
+}
+
+.active {
+  background-color: $dark-300;
+  color: $white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    width: 0.2em;
+    height: 100%;
+    background-color: $red;
+  }
+}

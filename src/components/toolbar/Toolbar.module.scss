@@ -1,4 +1,16 @@
+@import 'src/lib/styles/mixin.scss';
+
 .toolbar {
-  padding: 1em;
+  padding: 1em 1.5em;
   color: #fff;
+
+  @include max-w-md() {
+    padding-left: 5em;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
 }

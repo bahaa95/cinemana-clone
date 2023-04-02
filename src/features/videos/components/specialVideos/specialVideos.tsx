@@ -40,6 +40,9 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
       <Box className={`absolute top bottom right left z-index-30 ${styles.overlay}`}></Box>
       {/* info */}
       <Box className={`relative flex flex-col z-index-40 ${styles.info}`}>
+        <Box className={`relative capitalize text-gray ${styles.release}`}>
+          <Text>new releases</Text>
+        </Box>
         {/* title */}
         <Box className={`flex alaign-center`}>
           <h3 className={`text-white font-semibold ${styles.title}`}>

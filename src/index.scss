@@ -24,6 +24,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @extend .customScrollbar;
 }
 
 .bg-dark-100 {
@@ -44,4 +45,36 @@ body {
 
 .text-white {
   color: $white;
+}
+
+.customScrollbar {
+  &::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  //scroll color
+  &::-webkit-scrollbar-thumb {
+    background: #1e2c36;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    opacity: 0.9;
+  }
+  //scroll color when it active
+  &::-webkit-scrollbar-thumb:active {
+    background: $dark-100;
+  }
+  //scrollbar (entire scrollbar)
+  &::-webkit-scrollbar-track {
+    background: $dark-200;
+    border: 0px none #ffffff;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }

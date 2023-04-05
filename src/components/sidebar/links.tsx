@@ -6,17 +6,17 @@ import { TbDeviceTvOld } from 'react-icons/tb';
 export const links = [
   {
     title: 'home',
-    link: '/',
+    link: '/home',
     icon: IoIosHome,
   },
   {
     title: 'movies',
-    link: '/search?type=movie',
+    link: '/movies/search?type=movie',
     icon: MdMovie,
   },
   {
     title: 'series',
-    link: '/search?type=series',
+    link: '/series/search?type=series',
     icon: TbDeviceTvOld,
   },
   {

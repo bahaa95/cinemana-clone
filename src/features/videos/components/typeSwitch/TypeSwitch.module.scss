@@ -1,0 +1,22 @@
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+$border-radius: 2em;
+
+.typeSwitch {
+  margin: 0.2em 0.1em;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: $source_sans_pro;
+}
+
+.active {
+  background-color: $white;
+  color: $dark-300;
+}
+
+.type {
+  padding: 0.4em 0.8em;
+  border-radius: $border-radius;
+}

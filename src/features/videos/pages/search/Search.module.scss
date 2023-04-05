@@ -1,0 +1,25 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.search {
+  padding: 3em 1em;
+}
+
+.showFiltersButton {
+  padding: 0.7em 0em;
+  background-color: $dark-100;
+}
+
+.filters {
+  padding: 1em 0.5em;
+
+  @include max-w-xs() {
+    padding: 1em 0.5em 3em 0.5em;
+  }
+}
+
+.stars {
+  padding: 0.5em 1em;
+  border-radius: 2em;
+}

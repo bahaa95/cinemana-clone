@@ -19,3 +19,6 @@ export * from './aside';
 export * from './sidebar';
 export * from './header';
 export * from './nav';
+export * from './switch';
+export * from './select';
+export * from './rating';

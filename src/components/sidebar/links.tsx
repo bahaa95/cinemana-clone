@@ -11,12 +11,12 @@ export const links = [
   },
   {
     title: 'movies',
-    link: '/movies/search?type=movie',
+    link: '/movies?type=movie',
     icon: MdMovie,
   },
   {
     title: 'series',
-    link: '/series/search?type=series',
+    link: '/series?type=series',
     icon: TbDeviceTvOld,
   },
   {

@@ -1,0 +1,45 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+
+.input {
+  display: block;
+  background-color: transparent;
+  border: 1px solid $light-100;
+  font-size: 0.9rem;
+  padding: 0.7em 1em;
+  border-radius: 0.4em;
+  color: #fff;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $light-500;
+  }
+
+  &::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: $light-400;
+  }
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $light-400;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $light-400;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $light-400;
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $light-400;
+  }
+
+  &::placeholder {
+    /* Most modern browsers support this now. */
+    color: $light-400;
+  }
+}

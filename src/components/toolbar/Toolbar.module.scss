@@ -1,11 +1,12 @@
 @import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
 
 .toolbar {
   padding: 1em 1.5em;
   color: #fff;
 
   @include max-w-md() {
-    padding-left: 5em;
+    padding-left: 4em;
   }
 }
 
@@ -13,4 +14,25 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   align-items: center;
+}
+
+.dropDownList {
+  width: 12em;
+  bottom: -3.5em;
+  font-weight: 500;
+
+  .listItem {
+    padding: 0.5em 0.5em;
+    background-color: $dark-100;
+    color: $gray;
+
+    &:hover {
+      background-color: $white;
+      color: $dark-300;
+    }
+  }
+}
+
+.showDropDownList {
+  display: block;
 }

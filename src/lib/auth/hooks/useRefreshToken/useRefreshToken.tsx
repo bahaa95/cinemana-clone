@@ -1,6 +1,8 @@
 import { axios } from 'src/lib/axios';
-import { RefreshTokenResponse } from '../types';
-import { useAuth } from './useAuth';
+import { Auth } from '../../types';
+import { useAuth } from '../useAuth';
+
+export type RefreshTokenResponse = Omit<Auth, 'authenticated'>;
 
 export const useRefreshToken = () => {
   const { setAuth } = useAuth();

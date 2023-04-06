@@ -1,0 +1,22 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.form {
+  width: 30em;
+
+  @include max-w-xs {
+    width: 20em;
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: $source_sans_pro;
+}
+
+.logo {
+  margin: 0em !important;
+  width: 4em;
+}

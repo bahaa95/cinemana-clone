@@ -47,6 +47,10 @@ body {
   color: $white;
 }
 
+.text-danger {
+  color: $red;
+}
+
 .customScrollbar {
   &::-webkit-scrollbar {
     width: 9px;

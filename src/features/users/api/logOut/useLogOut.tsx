@@ -1,8 +1,8 @@
 import { useMutation } from 'react-query';
+import { useAuth } from 'src/lib/auth';
 import { useAxiosPrivate } from 'src/lib/axios';
 import { notify } from 'src/lib/notify';
 import { MutationConfig } from 'src/lib/react-query';
-import { useAuth } from '../../index';
 
 type LogOutApi = () => Promise<void>;
 
@@ -15,13 +15,13 @@ export const useLogOut = ({ config }: UseLogOutOPtions = {}) => {
   const { setAuth } = useAuth();
 
   const logOutApi: LogOutApi = async () => {
-    await axios.post(`/api/auth/logout`);
+    await axios.post(`/users/logout`);
   };
 
   return useMutation({
     mutationFn: logOutApi,
     onSuccess: () => {
-      setAuth({ authenticated: false, accessToken: '', email: '', username: '' });
+      setAuth({ authenticated: false, accessToken: '', userName: '' });
       notify({ type: 'success', message: 'Logged out successfully.' });
     },
     ...config,

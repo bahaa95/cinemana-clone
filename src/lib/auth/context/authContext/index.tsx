@@ -4,8 +4,7 @@ import { AuthContext as TAuthContext, Props } from './types';
 
 const defaultAuthValues: Auth = {
   authenticated: false,
-  username: '',
-  email: '',
+  userName: '',
   accessToken: '',
 };
 

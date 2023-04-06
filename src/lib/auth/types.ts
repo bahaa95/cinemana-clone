@@ -1,8 +1,5 @@
 export type Auth = {
   authenticated: boolean;
-  username: string;
-  email: string;
+  userName: string;
   accessToken: string;
 };
-
-export type RefreshTokenResponse = Omit<Auth, 'authenticated'>;

@@ -45,7 +45,7 @@ export const MainLayout = (props: Props) => {
         >
           <Sidebar showSidebar={showSidebar} hideSidebar={hideSidebar} />
         </Box>
-        <Box className={`customScrollbar ${styles.children}`}>{children}</Box>
+        <Box className={`relative customScrollbar bg-dark-200 ${styles.children}`}>{children}</Box>
         <Box>
           <Footer />
         </Box>

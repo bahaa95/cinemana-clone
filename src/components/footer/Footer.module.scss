@@ -2,7 +2,7 @@
 @import 'src/lib/styles/color.scss';
 
 .footer {
-  padding: 0.6em 0.5em;
+  height: 4em;
   @include transition(background-color 0.5s);
 
   &:hover {

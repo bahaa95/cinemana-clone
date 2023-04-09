@@ -4,6 +4,7 @@
 
 .container {
   width: 100%;
+  min-height: 100vh;
 
   @include min-w-lg() {
     margin-left: 15em;
@@ -45,5 +46,6 @@
 }
 
 .children {
-  padding-top: 3em;
+  padding-top: 3.4em;
+  min-height: calc(100vh - 4em);
 }

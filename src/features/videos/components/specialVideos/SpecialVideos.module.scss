@@ -143,10 +143,10 @@
 }
 
 .watchButton {
-  padding: 0.6em 2.5em;
+  padding: 0.6em 2.5em !important;
 
   @include max-w-sm() {
-    padding: 0.3em 1em;
+    padding: 0.3em 1.5em !important;
   }
 }
 

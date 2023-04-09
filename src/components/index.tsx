@@ -25,3 +25,4 @@ export * from './rating';
 export * from './fieldWrapper';
 export * from './input';
 export * from './spinner';
+export * from './privateContent';

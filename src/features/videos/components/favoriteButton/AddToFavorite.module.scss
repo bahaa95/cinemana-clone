@@ -1,0 +1,14 @@
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.button {
+  font-family: $source_sans_pro;
+
+  &:hover {
+    color: $gray;
+  }
+}
+
+.favorite {
+  color: $red;
+}

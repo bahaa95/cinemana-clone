@@ -4,3 +4,8 @@ export * from './getVideo';
 export * from './getPerson';
 export * from './search';
 export * from './getCategories';
+export * from './getHistory';
+export * from './editFavorite';
+export * from './editWatchList';
+export * from './getFavorites';
+export * from './getWatchList';

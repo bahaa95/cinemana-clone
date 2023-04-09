@@ -1,0 +1,1 @@
+export { useEditFavorite } from './useEditFavorite';

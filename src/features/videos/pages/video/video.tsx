@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import { BsYoutube } from 'react-icons/bs';
-import { FaHeart } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
 import {
   MainLayout,
@@ -13,24 +13,67 @@ import {
   Text,
   OuterLink,
 } from 'src/components';
+import { useAuth, usePrivateAction } from 'src/lib/auth';
 import { notify } from 'src/lib/notify';
 import { getScreenWidth } from 'src/utils';
-import { useGetVideo } from '../../api';
-import { IMDB } from '../../components';
-import { Seasons } from '../../components/seasons';
-import { SectionTitle } from '../../components/sectionTitle';
-import { Staff } from '../../components/staff';
-import { StaffNameList } from '../../components/staffNameList';
-import { Videos } from '../../components/videos';
-import { Watch } from '../../components/watch';
+import { useGetVideo, useGetHistory, useEditFavorite, useEditWatchList } from '../../api';
+import {
+  IMDB,
+  Seasons,
+  SectionTitle,
+  Staff,
+  StaffNameList,
+  Videos,
+  Watch,
+  WatchListButton,
+  FavoriteButton,
+} from '../../components';
 import { getYear } from '../../utils';
 import styles from './Video.module.scss';
 
 export const Video = () => {
   const { _id } = useParams<{ _id: string }>();
+  const { auth } = useAuth();
+  const privateAction = usePrivateAction();
+
+  // get video info query
   const { data, ...videoQuery } = useGetVideo({ videoId: _id as string });
 
-  if (videoQuery.isLoading) {
+  // get history for video query
+  const historyQuery = useGetHistory({
+    videoId: _id as string,
+    config: { enabled: false },
+  });
+
+  // edit favorite (add and remove video from favorites)
+  const favoriteMutation = useEditFavorite({ videoId: _id as string });
+
+  // edit watchList (add and remove video from watchList)
+  const watchListMutation = useEditWatchList({ videoId: _id as string });
+
+  const handleEditFavorite = async () => {
+    await favoriteMutation.mutateAsync({
+      videoId: _id as string,
+      favorite: !historyQuery.data?.favorite,
+    });
+  };
+
+  const handleEditWatchList = async () => {
+    await watchListMutation.mutateAsync({
+      videoId: _id as string,
+      watchList: !historyQuery.data?.watchList,
+    });
+  };
+
+  useEffect(() => {
+    // get history query if user is logged in
+    if (auth.authenticated) {
+      historyQuery.refetch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (videoQuery.isLoading || historyQuery.isLoading) {
     return <h1>Loding...</h1>;
   }
 
@@ -104,6 +147,7 @@ export const Video = () => {
                 <StackItem>
                   <Box className={`${styles.actions}`}>
                     <Stack direction={'row'} spacing={'1em'}>
+                      {/* triler */}
                       <StackItem>
                         <OuterLink
                           href={data?.video?.triler}
@@ -113,25 +157,25 @@ export const Video = () => {
                           <Text>Triler</Text>
                         </OuterLink>
                       </StackItem>
+                      {/* Favorites */}
                       <StackItem>
-                        <OuterLink
-                          href={data?.video?.triler}
-                          className={`text-white flex alaign-center ${styles.actionButton}`}
-                        >
-                          <FaHeart />
-                          <Text>Favorites</Text>
-                        </OuterLink>
+                        <FavoriteButton
+                          isFavorite={historyQuery.data?.favorite}
+                          onClick={() => privateAction(handleEditFavorite)}
+                        />
+                      </StackItem>
+                      {/* watch list */}
+                      <StackItem>
+                        <WatchListButton onClick={() => privateAction(handleEditWatchList)} />
                       </StackItem>
                     </Stack>
                   </Box>
                 </StackItem>
                 {/* description */}
                 <StackItem>
-                  <Box>
-                    <Text className={`text-white ${styles.description}`}>
-                      {data?.video?.description}
-                    </Text>
-                  </Box>
+                  <Text className={`text-white ${styles.description}`}>
+                    {data?.video?.description}
+                  </Text>
                 </StackItem>
                 {/* staff */}
                 <StackItem>
@@ -165,27 +209,19 @@ export const Video = () => {
           <Box>
             <Stack direction={'column'}>
               <StackItem>
-                <Box>
-                  <SectionTitle>Cast & Crew</SectionTitle>
-                </Box>
+                <SectionTitle>Cast & Crew</SectionTitle>
               </StackItem>
               {/* actors */}
               <StackItem>
-                <Box>
-                  <Staff title="actors" persons={data?.video?.actors || []} />
-                </Box>
+                <Staff title="actors" persons={data?.video?.actors || []} />
               </StackItem>
               {/* writers */}
               <StackItem>
-                <Box>
-                  <Staff title="writers" persons={data?.video?.writers || []} />
-                </Box>
+                <Staff title="writers" persons={data?.video?.writers || []} />
               </StackItem>
               {/* directors */}
               <StackItem>
-                <Box>
-                  <Staff title="directors" persons={data?.video?.directors || []} />
-                </Box>
+                <Staff title="directors" persons={data?.video?.directors || []} />
               </StackItem>
             </Stack>
           </Box>
@@ -196,14 +232,10 @@ export const Video = () => {
             <Box>
               <Stack direction={'column'}>
                 <StackItem>
-                  <Box>
-                    <SectionTitle>You may also like</SectionTitle>
-                  </Box>
+                  <SectionTitle>You may also like</SectionTitle>
                 </StackItem>
                 <StackItem>
-                  <Box>
-                    <Videos videos={data?.similarVideos || []} />
-                  </Box>
+                  <Videos videos={data?.similarVideos || []} />
                 </StackItem>
               </Stack>
             </Box>

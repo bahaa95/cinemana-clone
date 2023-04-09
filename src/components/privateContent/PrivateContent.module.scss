@@ -1,0 +1,33 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.privateContent {
+  padding: 8em 1em 1em 1em;
+
+  @include max-w-sm() {
+    padding: 10em 1em 1em 1em;
+  }
+}
+
+.imageContainer {
+  width: 8em;
+}
+
+.image {
+  width: 100%;
+}
+
+.text {
+  font-family: $source_sans_pro;
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  @include max-w-sm() {
+    font-size: 1.2rem;
+  }
+}
+
+.button {
+  padding: 0.3em 2.5em !important;
+}

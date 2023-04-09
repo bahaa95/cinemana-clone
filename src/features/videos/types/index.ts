@@ -61,3 +61,9 @@ export interface Group {
   title: string;
   videos: VideoItem[];
 }
+
+export interface History {
+  _id: string;
+  watchList: boolean;
+  favorite: boolean;
+}

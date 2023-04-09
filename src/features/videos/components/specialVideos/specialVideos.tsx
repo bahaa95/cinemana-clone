@@ -68,7 +68,7 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
             pagination={{
               clickable: true,
             }}
-            loop={true}
+            // loop={true}
             modules={[Autoplay, Navigation]}
             autoplay={{
               delay: 5000,

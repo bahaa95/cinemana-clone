@@ -5,7 +5,7 @@ import { notify } from 'src/lib/notify';
 
 export const useAxiosPrivate = () => {
   const { auth } = useAuth();
-  const refreshToken = useRefreshToken();
+  const refreshTokenMutation = useRefreshToken();
 
   const axiosPrivate = Axios.create({
     baseURL: API_URL,
@@ -18,7 +18,7 @@ export const useAxiosPrivate = () => {
 
       //* generate new access token if the current access token is invalid
       if (!isValidToken(auth?.accessToken)) {
-        refreshTokenResponse = await refreshToken();
+        refreshTokenResponse = await refreshTokenMutation.mutateAsync(undefined);
       }
 
       request.headers.Authorization = `Bearar ${

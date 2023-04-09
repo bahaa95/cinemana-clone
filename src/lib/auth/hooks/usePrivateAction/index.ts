@@ -1,0 +1,1 @@
+export { usePrivateAction } from './usePrivateAction';

@@ -1,15 +1,24 @@
+import { useMutation } from 'react-query';
 import { axios } from 'src/lib/axios';
+import { MutationConfig } from 'src/lib/react-query';
+import { Copy } from 'src/types';
 import { Auth } from '../../types';
 import { useAuth } from '../useAuth';
 
-export type RefreshTokenResponse = Omit<Auth, 'authenticated'>;
+type RefreshToken = () => Promise<RefreshTokenResponse>;
+export type RefreshTokenResponse = Copy<Omit<Auth, 'authenticated'>>;
 
-export const useRefreshToken = () => {
+interface UseRefreshTokenOptions {
+  config?: MutationConfig<RefreshToken>;
+}
+
+export const useRefreshToken = (options: UseRefreshTokenOptions = {}) => {
+  const { config } = options;
   const { setAuth } = useAuth();
 
   const refreshToken = async (): Promise<RefreshTokenResponse> => {
     const response = await axios.post<RefreshTokenResponse>(
-      '/api/auth/refreshToken',
+      '/users/refreshToken',
       {},
       {
         withCredentials: true,
@@ -21,5 +30,5 @@ export const useRefreshToken = () => {
     return data;
   };
 
-  return refreshToken;
+  return useMutation({ mutationKey: ['refreshToken'], mutationFn: refreshToken, ...config });
 };

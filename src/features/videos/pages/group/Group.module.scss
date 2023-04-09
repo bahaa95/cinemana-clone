@@ -1,0 +1,14 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.group {
+  padding: 2em 1.5em;
+}
+
+.title {
+  font-family: $source_sans_pro;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-bottom: 1em;
+}

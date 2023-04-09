@@ -9,3 +9,4 @@ export * from './editFavorite';
 export * from './editWatchList';
 export * from './getFavorites';
 export * from './getWatchList';
+export * from './getGroup';

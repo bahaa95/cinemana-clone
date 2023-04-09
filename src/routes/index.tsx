@@ -6,9 +6,10 @@ const { Home } = lazyImport(() => import('src/features/videos'), 'Home');
 const { Video } = lazyImport(() => import('src/features/videos'), 'Video');
 const { Staff } = lazyImport(() => import('src/features/videos'), 'Staff');
 const { Search } = lazyImport(() => import('src/features/videos'), 'Search');
-const { UsersRoute } = lazyImport(() => import('src/features/users'), 'UsersRoute');
 const { Favorites } = lazyImport(() => import('src/features/videos'), 'Favorites');
 const { WatchList } = lazyImport(() => import('src/features/videos'), 'WatchList');
+const { Group } = lazyImport(() => import('src/features/videos'), 'Group');
+const { UsersRoute } = lazyImport(() => import('src/features/users'), 'UsersRoute');
 
 export const AppRoutes = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export const AppRoutes = () => {
       <Route path="/movies" element={<Search />} />
       <Route path="/series" element={<Search />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/groups/_id/:_id" element={<Group />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/watchList" element={<WatchList />} />
       <Route path="/auth/*" element={<UsersRoute />} />

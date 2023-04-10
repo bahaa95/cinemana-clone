@@ -39,7 +39,7 @@ export const MainLayout = (props: Props) => {
           <Toolbar />
         </Box>
         <Box
-          className={`absolute left top fixed z-index-50 ${styles.sidebar} ${
+          className={`absolute top fixed z-index-50 ${styles.sidebar} ${
             sidebar && styles.showSidebar
           }`}
         >

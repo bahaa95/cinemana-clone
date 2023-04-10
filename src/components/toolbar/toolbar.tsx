@@ -59,7 +59,7 @@ export const Toolbar = () => {
           ) : null}
           {/* dropdown list */}
           <Box
-            className={`bg-dark-100 absolute right rounded-sm hidden ${styles.dropDownList} ${
+            className={`bg-dark-100 absolute right rounded-sm ${styles.dropDownList} ${
               showDropdown ? styles.showDropDownList : ''
             }`}
           >

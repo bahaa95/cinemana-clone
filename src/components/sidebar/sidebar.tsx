@@ -11,7 +11,7 @@ export const Sidebar = (props: SidebarProps) => {
   const { showSidebar, hideSidebar } = props;
   const location = useLocation();
 
-  //add active class to curent nav-link
+  //add active class to curent page
   useEffect(() => {
     const currentPage = window?.location.href.split('?')[0];
     const elements = document.querySelectorAll('#nav-link');

@@ -21,7 +21,7 @@
 }
 
 .sidebar {
-  @include transition(left 0.5s);
+  @include transition(left 0.3s);
 
   @include min-w-lg() {
     width: 15em;

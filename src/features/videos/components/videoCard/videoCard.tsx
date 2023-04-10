@@ -13,7 +13,7 @@ export const VideoCard = (props: VideoCardProps) => {
   const handleWatchClick = () => navigate(`/video/_id/${video._id}`);
 
   return (
-    <Box className={`noselect pointer ${styles.videoCard}`}>
+    <Box className={`noselect ${styles.videoCard}`}>
       <Stack>
         {/* image */}
         <StackItem className={`relative rounded-lg overflow-hidden`}>

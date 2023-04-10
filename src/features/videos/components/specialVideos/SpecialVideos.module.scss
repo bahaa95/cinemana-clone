@@ -172,17 +172,17 @@
 
   @include min-w-lg() {
     width: 14em;
-    height: 8em;
+    height: 7.5em;
   }
 
   @include max-w-md() {
     width: 11em;
-    height: 7em;
+    height: 6.5em;
   }
 
   @include max-w-xs() {
     width: 7em;
-    height: 5em;
+    height: 4.5em;
   }
 }
 

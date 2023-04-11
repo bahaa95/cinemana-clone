@@ -3,7 +3,12 @@ import { API_URL } from 'src/config';
 import { useAuth, useRefreshToken, isValidToken, RefreshTokenResponse } from 'src/lib/auth';
 import { notify } from 'src/lib/notify';
 
-export const useAxiosPrivate = () => {
+interface Options {
+  showNotify?: boolean;
+}
+
+export const useAxiosPrivate = (options: Options = {}) => {
+  const { showNotify = false } = options;
   const { auth } = useAuth();
   const refreshTokenMutation = useRefreshToken();
 
@@ -33,11 +38,13 @@ export const useAxiosPrivate = () => {
   axiosPrivate.interceptors.response.use(
     (response) => response,
     async (error) => {
-      const message = (error?.response?.data?.message || error?.message) as string;
-      notify({
-        type: 'error',
-        message: message,
-      });
+      if (showNotify) {
+        const message = (error?.response?.data?.message || error?.message) as string;
+        notify({
+          type: 'error',
+          message: message,
+        });
+      }
 
       return Promise.reject(error);
     }

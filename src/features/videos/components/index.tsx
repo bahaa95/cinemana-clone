@@ -15,3 +15,4 @@ export * from './staffNameList';
 export * from './typeSwitch';
 export * from './videoList';
 export * from './favoriteButton';
+export * from './recomodation';

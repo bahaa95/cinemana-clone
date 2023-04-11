@@ -27,3 +27,4 @@ export * from './input';
 export * from './spinner';
 export * from './privateContent';
 export * from './loader';
+export * from './noContent';

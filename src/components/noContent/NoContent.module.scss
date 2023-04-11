@@ -1,0 +1,17 @@
+@import 'src/lib/styles/mixin.scss';
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.noContent {
+  padding-top: 8em;
+}
+
+.title {
+  font-family: $source_sans_pro;
+  font-size: 2rem;
+  font-weight: 600;
+
+  @include max-w-sm() {
+    font-size: 1.5rem;
+  }
+}

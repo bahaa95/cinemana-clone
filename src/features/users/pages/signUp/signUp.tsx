@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Box, Form, Helmet, Main, Section, Stack, StackItem, Input, Text } from 'src/components';
+import { useNavigate } from 'react-router-dom';
+import { Box, Form, Helmet, Main, Section, Stack, StackItem, Input } from 'src/components';
 import { notify } from 'src/lib/notify';
 import { useSignUp } from '../../api';
-import { Layout, Button } from '../../components';
+import { Layout, Button, FormFoter } from '../../components';
 import { signUpSchema, SignUpSchema } from '../../valdationSchema';
 import styles from './SignUp.module.scss';
 
@@ -11,13 +11,20 @@ export const SignUp = () => {
 
   const signUpMutation = useSignUp({
     config: {
-      onSuccess() {
+      onSuccess: () => {
         notify({
           type: 'success',
           message: 'Sign up success',
         });
 
         navigate('/auth/signIn');
+      },
+      onError: (error: any) => {
+        const message = (error?.response?.data?.message || error?.message) as string;
+        notify({
+          type: 'error',
+          message: message,
+        });
       },
     },
   });
@@ -82,16 +89,11 @@ export const SignUp = () => {
                       </Button>
                     </StackItem>
                     <StackItem>
-                      <Stack className="text-gray noselect" direction={'row'}>
-                        <StackItem>
-                          <Text>Already has an account ?</Text>
-                        </StackItem>
-                        <StackItem>
-                          <Link to="/auth/signIn" className="text-danger">
-                            Sign In
-                          </Link>
-                        </StackItem>
-                      </Stack>
+                      <FormFoter
+                        title="Already has an account ?"
+                        buttonText="Sign In"
+                        link="/auth/signIn"
+                      />
                     </StackItem>
                   </Stack>
                 </Box>

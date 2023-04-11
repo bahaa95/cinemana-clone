@@ -1,20 +1,9 @@
-import { useNavigate, Link } from 'react-router-dom';
-import {
-  Box,
-  Form,
-  Helmet,
-  Main,
-  Section,
-  Stack,
-  StackItem,
-  Input,
-  Image,
-  Text,
-} from 'src/components';
+import { useNavigate } from 'react-router-dom';
+import { Box, Form, Helmet, Main, Section, Stack, StackItem, Input, Image } from 'src/components';
 import { useAuth } from 'src/lib/auth';
 import { notify } from 'src/lib/notify';
 import { useSignIn } from '../../api';
-import { Layout, Button } from '../../components';
+import { Layout, Button, FormFoter } from '../../components';
 import { signInSchema, SignInSchema } from '../../valdationSchema';
 import styles from './SignIn.module.scss';
 
@@ -24,7 +13,7 @@ export const SignIn = () => {
 
   const signInMutation = useSignIn({
     config: {
-      onSuccess(data) {
+      onSuccess: (data) => {
         notify({
           type: 'success',
           message: 'Sign in success',
@@ -37,6 +26,13 @@ export const SignIn = () => {
         });
 
         navigate('/home');
+      },
+      onError: (error: any) => {
+        const message = (error?.response?.data?.message || error?.message) as string;
+        notify({
+          type: 'error',
+          message: message,
+        });
       },
     },
   });
@@ -95,16 +91,7 @@ export const SignIn = () => {
                       </Button>
                     </StackItem>
                     <StackItem>
-                      <Stack className="text-gray noselect" direction={'row'}>
-                        <StackItem>
-                          <Text>New member ?</Text>
-                        </StackItem>
-                        <StackItem>
-                          <Link to="/auth/signUp" className="text-danger">
-                            Sign Up
-                          </Link>
-                        </StackItem>
-                      </Stack>
+                      <FormFoter title="New member ?" buttonText="Sign Up" link="/auth/signUp" />
                     </StackItem>
                   </Stack>
                 </Box>

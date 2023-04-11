@@ -4,6 +4,7 @@ import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { Loader, ErrorBoundary } from 'src/components';
 import { AuthProvider } from 'src/lib/auth';
 import { toastifyProps } from 'src/lib/notify';
 import { queryClient } from 'src/lib/react-query';
@@ -18,24 +19,24 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <Suspense
       fallback={
         <>
-          <h2>Suspense</h2>
+          <Loader />
         </>
       }
     >
       <AuthProvider>
         <BrowserRouter>
-          {/* <ErrorBoundary> */}
-          <QueryClientProvider client={queryClient}>
-            <>
-              <ChakraProvider>
-                {children}
-                {isDevelopment() ? (
-                  <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-                ) : null}
-              </ChakraProvider>
-            </>
-          </QueryClientProvider>
-          {/* </ErrorBoundary> */}
+          <ErrorBoundary>
+            <QueryClientProvider client={queryClient}>
+              <>
+                <ChakraProvider>
+                  {children}
+                  {isDevelopment() ? (
+                    <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+                  ) : null}
+                </ChakraProvider>
+              </>
+            </QueryClientProvider>
+          </ErrorBoundary>
         </BrowserRouter>
         <ToastContainer {...toastifyProps} />
       </AuthProvider>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useRefreshToken } from 'src/lib/auth';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Loader } from 'src/components';
+import { useAuth, useRefreshToken, isValidToken } from 'src/lib/auth';
 import { lazyImport } from 'src/utils/lazyImport';
 const { Home } = lazyImport(() => import('src/features/videos'), 'Home');
 const { Video } = lazyImport(() => import('src/features/videos'), 'Video');
@@ -13,25 +14,31 @@ const { UsersRoute } = lazyImport(() => import('src/features/users'), 'UsersRout
 
 export const AppRoutes = () => {
   const navigate = useNavigate();
+  const { auth } = useAuth();
+  const location = useLocation();
 
   const refreshTokenMutation = useRefreshToken({
     config: {
       useErrorBoundary: false,
-      onSuccess: () => navigate('/home'),
+      onSuccess: () => navigate(location.pathname),
       onError: () => navigate('/auth/signIn'),
     },
   });
 
   useEffect(() => {
-    refreshTokenMutation.mutate(undefined);
+    if (!isValidToken(auth.accessToken)) {
+      refreshTokenMutation.mutate(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (refreshTokenMutation.isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/home" replace={true} />} />
       <Route path="/home" element={<Home />} />
       <Route path="/video/_id/:_id" element={<Video />} />
       <Route path="/staff/_id/:_id" element={<Staff />} />

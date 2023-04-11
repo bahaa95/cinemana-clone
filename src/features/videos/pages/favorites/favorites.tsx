@@ -1,5 +1,14 @@
 import { useEffect } from 'react';
-import { Box, Helmet, Main, MainLayout, Section, PrivateContent } from 'src/components';
+import {
+  Box,
+  Helmet,
+  Main,
+  MainLayout,
+  Section,
+  PrivateContent,
+  Loader,
+  NoContent,
+} from 'src/components';
 import { useAuth } from 'src/lib/auth';
 import { useGetFavorites } from '../../api';
 import { VideoList } from '../../components';
@@ -22,22 +31,26 @@ export const Favorites = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (favoritesQuery.isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
     <MainLayout>
       <Helmet title="favorites" />
-      <PrivateContent>
-        <Main className={`relative bg-dark-200 min-h-full ${styles.favorites}`}>
-          <Section>
-            <Box>
-              <VideoList videos={favoritesQuery.data || []} />
-            </Box>
-          </Section>
-        </Main>
-      </PrivateContent>
+      {favoritesQuery.isLoading ? (
+        <Loader />
+      ) : (
+        <PrivateContent>
+          <Main className={`relative bg-dark-200 min-h-full ${styles.favorites}`}>
+            <Section>
+              <Box>
+                {favoritesQuery.data && favoritesQuery.data.length > 0 ? (
+                  <VideoList videos={favoritesQuery.data || []} />
+                ) : (
+                  <NoContent title="Your favorite list is empty." />
+                )}
+              </Box>
+            </Section>
+          </Main>
+        </PrivateContent>
+      )}
     </MainLayout>
   );
 };

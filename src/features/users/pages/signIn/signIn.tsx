@@ -1,5 +1,18 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Form, Helmet, Main, Section, Stack, StackItem, Input, Image } from 'src/components';
+import {
+  Box,
+  Form,
+  Helmet,
+  Main,
+  Section,
+  Stack,
+  StackItem,
+  Input,
+  Image,
+  CloneWarning,
+  useCloneWarning,
+} from 'src/components';
 import { useAuth } from 'src/lib/auth';
 import { notify } from 'src/lib/notify';
 import { useSignIn } from '../../api';
@@ -10,6 +23,7 @@ import styles from './SignIn.module.scss';
 export const SignIn = () => {
   const navigate = useNavigate();
   const { setAuth } = useAuth();
+  const { isOpen, handleOpen, handleClose } = useCloneWarning();
 
   const signInMutation = useSignIn({
     config: {
@@ -40,6 +54,11 @@ export const SignIn = () => {
   const handleSignIn = async (data: SignInSchema) => {
     await signInMutation.mutateAsync(data);
   };
+
+  useEffect(() => {
+    handleOpen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Layout>
@@ -99,6 +118,7 @@ export const SignIn = () => {
             </Form>
           </Box>
         </Section>
+        <CloneWarning isOpen={isOpen} handleOpen={handleOpen} handleClose={handleClose} />
       </Main>
     </Layout>
   );

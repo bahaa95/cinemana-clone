@@ -96,7 +96,7 @@ export const Video = () => {
             <Box className={`${styles.infoContainer}`}>
               {/* image */}
               <Box
-                className={`relative overflow-hidden rounded-lg flex justify-center alaign-center ${styles.videoImageContainer}`}
+                className={`relative noselect overflow-hidden rounded-lg flex justify-center alaign-center ${styles.videoImageContainer}`}
               >
                 <Image
                   src={getScreenWidth() <= 575 ? data?.video?.cover?.url : data?.video?.poster?.url}
@@ -138,7 +138,7 @@ export const Video = () => {
                       </Box>
                       {/* categories */}
                       <Box className={`${styles.categories}`}>
-                        <Stack direction={'row'} className={`text-gray`}>
+                        <Stack direction={'row'} spacing={'0.3em'} className={`text-gray`}>
                           {data?.video?.categories.map((category) => (
                             <StackItem
                               key={category._id}

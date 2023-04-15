@@ -1,4 +1,4 @@
-import { Navigation } from 'swiper';
+import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,7 +17,8 @@ export const Videos = (props: VideosProps) => {
         pagination={{
           clickable: true,
         }}
-        modules={[Navigation]}
+        freeMode={true}
+        modules={[Navigation, FreeMode]}
       >
         {videos.map((video) => (
           <SwiperSlide key={video._id} className={`w-fit`}>

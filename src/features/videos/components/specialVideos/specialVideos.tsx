@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Autoplay, Navigation } from 'swiper';
+import { Autoplay, Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Box, Image, Text } from 'src/components';
 import { SpecialVideo } from '../../types';
@@ -68,8 +68,9 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
             pagination={{
               clickable: true,
             }}
+            freeMode={true}
             // loop={true}
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay, Navigation, FreeMode]}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,

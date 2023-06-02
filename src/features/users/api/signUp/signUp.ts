@@ -6,6 +6,6 @@ interface Response {
 }
 
 export const signUp = async (data: SignUpSchema): Promise<Response> => {
-  const response = await axios.post(`/users/signup`, data);
+  const response = await axios.post<Response>(`/users/signup`, data);
   return response.data;
 };

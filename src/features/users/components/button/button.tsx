@@ -1,9 +1,7 @@
-import { Button as ButtonComponent } from 'src/components';
+import { Button as ButtonComponent, ButtonProps } from 'src/components';
 import styles from './Button.module.scss';
-import { ButtonProps } from './types';
 
-export const Button = (props: ButtonProps) => {
-  const { children, ...otherProps } = props;
+export const Button: React.FC<ButtonProps> = ({ children, ...otherProps }) => {
   return (
     <ButtonComponent {...otherProps} className={`w-full ${styles.button}`}>
       {children}

@@ -10,9 +10,9 @@ export const Layout = (props: LayoutProps) => {
   return (
     <Box
       {...otherProps}
-      className={`relative bg-dark-200 min-h-screen min-w-screen flex justify-center alaign-center ${
-        styles.layout
-      } ${className || ''}`}
+      className={`relative bg-dark-200 min-h-screen min-w-screen flex justify-center alaign-center  ${
+        className || ''
+      }`}
     >
       {children}
       <Box className={`absolute bottom left right noselect`}>

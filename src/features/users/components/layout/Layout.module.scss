@@ -2,14 +2,12 @@
 @import 'src/lib/styles/color.scss';
 @import 'src/lib/styles/fonts.scss';
 
-.layout {
-}
-
 .button {
   padding: 0.5em 1em;
   background: $red;
   font-family: $source_sans_pro;
   color: $white;
+  border-radius: none !important;
 
   &:hover {
     background: $white;

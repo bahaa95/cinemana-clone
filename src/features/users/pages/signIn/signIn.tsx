@@ -12,6 +12,7 @@ import {
   Image,
   CloneWarning,
   useCloneWarning,
+  Header,
 } from 'src/components';
 import { useAuth } from 'src/lib/auth';
 import { notify } from 'src/lib/notify';
@@ -65,24 +66,24 @@ export const SignIn = () => {
       <Helmet title="sign in" />
       <Main>
         <Section>
-          <Box>
-            <Form<SignInSchema, typeof signInSchema>
-              schema={signInSchema}
-              onSubmit={(data) => handleSignIn(data)}
-            >
-              {({ register, formState }) => (
-                <Box className={`${styles.form}`}>
-                  <Stack alignItems={'center'}>
-                    <StackItem>
-                      <Stack>
-                        <Box className="flex justify-center">
-                          <Image src="/cinemana.svg" className={`${styles.logo}`} />
-                        </Box>
-                        <StackItem>
-                          <h2 className={`text-gray ${styles.title}`}>Cinemana-Clone</h2>
-                        </StackItem>
-                      </Stack>
-                    </StackItem>
+          <Stack>
+            {/* header */}
+            <StackItem>
+              <Header className="flex flex-col alaign-center">
+                <Box className={`${styles.logo}`}>
+                  <Image src="/cinemana.svg" />
+                </Box>
+                <h2 className={`text-gray ${styles.title}`}>Cinemana-Clone</h2>
+              </Header>
+            </StackItem>
+            {/* sign in form */}
+            <StackItem>
+              <Form<SignInSchema, typeof signInSchema>
+                schema={signInSchema}
+                onSubmit={(data) => handleSignIn(data)}
+              >
+                {({ register, formState }) => (
+                  <Stack alignItems={'center'} className={`${styles.form}`}>
                     <StackItem className={`w-full`}>
                       <Input
                         placeholder="Email Address"
@@ -109,14 +110,15 @@ export const SignIn = () => {
                         Sign In
                       </Button>
                     </StackItem>
-                    <StackItem>
-                      <FormFoter title="New member ?" buttonText="Sign Up" link="/auth/signUp" />
-                    </StackItem>
                   </Stack>
-                </Box>
-              )}
-            </Form>
-          </Box>
+                )}
+              </Form>
+            </StackItem>
+            {/* form footer */}
+            <StackItem>
+              <FormFoter title="New Member?" buttonText="Sign Up" link="/auth/signUp" />
+            </StackItem>
+          </Stack>
         </Section>
         <CloneWarning isOpen={isOpen} handleOpen={handleOpen} handleClose={handleClose} />
       </Main>

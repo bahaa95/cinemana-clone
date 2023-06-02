@@ -8,6 +8,6 @@ interface Response {
 }
 
 export const signIn = async (data: SignInSchema): Promise<Response> => {
-  const response = await axios.post(`/users/signin`, data, { withCredentials: true });
+  const response = await axios.post<Response>(`/users/signin`, data, { withCredentials: true });
   return response.data;
 };

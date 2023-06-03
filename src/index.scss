@@ -11,7 +11,7 @@
 
 :root {
   @include max-w-xs() {
-    font-size: calc(1vw + 11px);
+    font-size: calc(1vw + 12px);
   }
 
   @include min-w-md() {

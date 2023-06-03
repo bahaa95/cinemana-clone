@@ -1,7 +1,5 @@
 import { AsideProps } from './types';
 
-export const Aside = (props: AsideProps) => {
-  const { children, ...otherProps } = props;
-
+export const Aside: React.FC<AsideProps> = ({ children, ...otherProps }) => {
   return <aside {...otherProps}>{children}</aside>;
 };

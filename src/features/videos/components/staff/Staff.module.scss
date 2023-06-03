@@ -7,7 +7,7 @@
 }
 
 .title {
-  padding: 0.1em 0em;
+  padding-bottom: 0.5em;
   font-weight: 500;
   font-family: $source_sans_pro;
   font-size: 0.9rem;
@@ -19,19 +19,17 @@
 
 .persons {
   display: grid;
+  row-gap: 1.5em;
 
   @include min-w-xl() {
     grid-template-columns: repeat(4, 1fr);
-    row-gap: 1em;
   }
 
   @include max-w-lg() {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 1em;
   }
 
   @include max-w-sm() {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 1em;
   }
 }

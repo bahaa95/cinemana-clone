@@ -2,21 +2,20 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Autoplay, Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box, Image, Text } from 'src/components';
-import { SpecialVideo } from '../../types';
+import { Box, Text, BackgroundImage } from 'src/components';
+import { TSpecialVideo } from '../../types';
+import { NewRelease } from '../newRelease';
 import { Stars } from '../stars';
 import { Watch } from '../watch';
 import styles from './SpecialVideos.module.scss';
+import { SpecialVideosProps } from './types';
 
-export type SpecialVideosProps = {
-  specialVideos: SpecialVideo[];
-  className?: string;
-  style?: React.CSSProperties;
-};
-
-export const SpecialVideos = (props: SpecialVideosProps) => {
-  const { specialVideos, className, style } = props;
-  const [activeVideo, setActiveVideo] = useState<SpecialVideo>(specialVideos[0]);
+export const SpecialVideos: React.FC<SpecialVideosProps> = ({
+  specialVideos,
+  className,
+  ...props
+}) => {
+  const [activeVideo, setActiveVideo] = useState<TSpecialVideo>(specialVideos[0]);
   const navigate = useNavigate();
 
   const handleWatchClick = () => navigate(`/video/_id/${activeVideo._id}`);
@@ -26,34 +25,24 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
       className={`relative bg-dark-200 flex flex-col justify-between ${className || ''} ${
         styles.specialVideos
       }`}
-      style={style}
+      {...props}
     >
       {/* background image */}
-      <Box className={`absolute top bottom right left z-index-20 ${styles.background}`}>
-        <Image
-          src={activeVideo?.cover?.url}
-          alt={activeVideo?.title}
-          className={`relative ${styles.backgroundImage}`}
-        />
-      </Box>
-      {/* backgroun overlay */}
-      <Box className={`absolute top bottom right left z-index-30 ${styles.overlay}`}></Box>
+      <BackgroundImage
+        src={activeVideo?.cover?.url}
+        alt={activeVideo?.title}
+        className={`z-index-20 ${styles.backgroundImage}`}
+      />
       {/* info */}
       <Box className={`relative flex flex-col z-index-40 ${styles.info}`}>
-        <Box className={`relative capitalize text-gray ${styles.release}`}>
-          <Text>new releases</Text>
-        </Box>
-        {/* title */}
+        <NewRelease />
+        {/* title and stars */}
         <Box className={`flex alaign-center`}>
-          <h3 className={`text-white font-semibold ${styles.title}`}>
-            {activeVideo?.title}
-            <Stars stars={activeVideo?.stars} />
-          </h3>
+          <h3 className={`text-white font-semibold ${styles.title}`}>{activeVideo?.title}</h3>
+          <Stars stars={activeVideo?.stars} />
         </Box>
         {/* description */}
-        <Box>
-          <Text className={`text-white ${styles.description}`}>{activeVideo?.description}</Text>
-        </Box>
+        <Text className={`text-white ${styles.description}`}>{activeVideo?.description}</Text>
       </Box>
       <Box className={`relative flex flex-col z-index-40`}>
         {/* actions */}
@@ -69,7 +58,6 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
               clickable: true,
             }}
             freeMode={true}
-            // loop={true}
             modules={[Autoplay, Navigation, FreeMode]}
             autoplay={{
               delay: 5000,
@@ -87,13 +75,11 @@ export const SpecialVideos = (props: SpecialVideosProps) => {
                 className={`rounded-lg overflow-hidden pointer ${styles.slide}`}
               >
                 <Box className={`relative image-overlay noselect ${styles.slideContainer}`}>
-                  <Box className={`absolute top bottom right left`}>
-                    <Image
-                      src={video.cover.url}
-                      alt={video.title}
-                      className={`rounded-lg ${styles.slideImage}`}
-                    />
-                  </Box>
+                  <BackgroundImage
+                    src={video.cover.url}
+                    alt={video.title}
+                    className={`rounded-lg ${styles.slideImage}`}
+                  />
                   <Box
                     className={`absolute top bottom right left flex justify-center alaign-center rounded-lg ${styles.slideOverlay}`}
                   >

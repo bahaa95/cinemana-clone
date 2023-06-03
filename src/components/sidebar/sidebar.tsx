@@ -7,8 +7,7 @@ import { links } from './links';
 import styles from './Sidebar.module.scss';
 import { SidebarProps } from './types';
 
-export const Sidebar = (props: SidebarProps) => {
-  const { showSidebar, hideSidebar } = props;
+export const Sidebar: React.FC<SidebarProps> = ({ showSidebar, hideSidebar }) => {
   const location = useLocation();
 
   //add active class to curent page
@@ -43,19 +42,13 @@ export const Sidebar = (props: SidebarProps) => {
             <Header className={`relative z-index-40 ${styles.header}`}>
               <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
                 <StackItem>
-                  <Link to="/">
-                    <Stack direction={'row'} alignItems={'center'} spacing={'1em'}>
-                      <StackItem>
-                        <Box className={`${styles.logoContainer}`}>
-                          <Image src="/cinemana.svg" />
-                        </Box>
-                      </StackItem>
-                      <StackItem>
-                        <Text className={`text-gray capitalize ${styles.headerText}`}>
-                          Cinemana-Clone
-                        </Text>
-                      </StackItem>
-                    </Stack>
+                  <Link to="/" className={`flex w-full alaign-center justify-between`}>
+                    <Box className={`${styles.logoContainer}`}>
+                      <Image src="/cinemana.svg" />
+                    </Box>
+                    <Text className={`text-gray capitalize ${styles.headerText}`}>
+                      Cinemana-Clone
+                    </Text>
                   </Link>
                 </StackItem>
                 <StackItem>
@@ -69,20 +62,16 @@ export const Sidebar = (props: SidebarProps) => {
           {/* nav */}
           <StackItem>
             <Nav className={`${styles.nav}`}>
-              <Stack>
+              <Stack direction={'column'}>
                 {links.map((link) => (
                   <StackItem key={link.title}>
                     <Link
                       to={link.link}
-                      className={`text-gray uppercase block relative ${styles.navLink}`}
+                      className={`flex alaign-center text-gray uppercase block relative ${styles.navLink}`}
                       id="nav-link"
                     >
-                      <Stack direction={'row'} alignItems={'center'} spacing={'1em'}>
-                        <StackItem>{<link.icon className={`${styles.icon}`} />}</StackItem>
-                        <StackItem>
-                          <Text>{link.title}</Text>
-                        </StackItem>
-                      </Stack>
+                      <link.icon className={`${styles.icon}`} />
+                      <Text>{link.title}</Text>
                     </Link>
                   </StackItem>
                 ))}

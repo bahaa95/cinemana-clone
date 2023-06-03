@@ -1,8 +1,11 @@
-import { Person } from '../../types';
+import { BoxProps } from 'src/components';
+import { Combine } from 'src/types';
+import { IPerson } from '../../types';
 
-export type StaffNameListProps = {
-  staff: Person[];
-  title: string;
-  className?: string;
-  style?: React.CSSProperties;
-};
+export type StaffNameListProps = Combine<
+  {
+    staff: IPerson[];
+    title: string;
+  },
+  Omit<BoxProps, 'children'>
+>;

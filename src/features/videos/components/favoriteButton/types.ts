@@ -1,7 +1,8 @@
-import { Copy } from 'src/types';
+import { Combine } from 'src/types';
 
-export type FavoriteButtonProps = Copy<
-  React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-> & {
-  isFavorite?: boolean;
-};
+export type FavoriteButtonProps = Combine<
+  React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+  {
+    isFavorite?: boolean;
+  }
+>;

@@ -1,14 +1,8 @@
 import React from 'react';
 import styles from './Text.module.scss';
+import { TextProps } from './types';
 
-export type TextProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLParagraphElement>,
-  HTMLParagraphElement
->;
-
-export const Text = (props: TextProps) => {
-  const { children, className, ...otherProps } = props;
-
+export const Text: React.FC<TextProps> = ({ children, className, ...otherProps }) => {
   return (
     <p className={`${styles.text} ${className || ''}`} {...otherProps}>
       {children}

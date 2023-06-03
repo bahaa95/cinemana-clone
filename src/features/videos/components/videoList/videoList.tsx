@@ -3,9 +3,7 @@ import { VideoCard } from '../videoCard';
 import { VideoListProps } from './types';
 import styles from './VideoList.module.scss';
 
-export const VideoList = (props: VideoListProps) => {
-  const { videos, ...otherProps } = props;
-
+export const VideoList: React.FC<VideoListProps> = ({ videos, ...otherProps }) => {
   return (
     <Box {...otherProps}>
       <Wrap spacing={'1em'} className={`${styles.videoList}`}>

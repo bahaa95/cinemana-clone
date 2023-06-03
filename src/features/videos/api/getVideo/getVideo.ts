@@ -1,10 +1,10 @@
 import { axios } from 'src/lib/axios';
-import { Video, VideoItem } from '../../types';
+import { IVideo, TVideoItem } from '../../types';
 
 export const getVideo = async (
   _id: string
-): Promise<{ video: Video; similarVideos: VideoItem[] }> => {
-  const response = await axios.get<{ video: Video; similarVideos: VideoItem[] }>(
+): Promise<{ video: IVideo; similarVideos: TVideoItem[] }> => {
+  const response = await axios.get<{ video: IVideo; similarVideos: TVideoItem[] }>(
     `/video/_id/${_id}`
   );
 

@@ -6,9 +6,7 @@ import { formatDuration } from '../../utils';
 import styles from './Episodes.module.scss';
 import { EpisodesProps } from './types';
 
-export const Episodes = (props: EpisodesProps) => {
-  const { episodes, ...otherProps } = props;
-
+export const Episodes: React.FC<EpisodesProps> = ({ episodes, ...otherProps }) => {
   return (
     <Box {...otherProps}>
       <Swiper
@@ -40,6 +38,7 @@ export const Episodes = (props: EpisodesProps) => {
                   className={`rounded-lg ${styles.image}`}
                 />
               </Box>
+              {/* episode info */}
               <Box className={`text-gray flex justify-between alaign-center ${styles.info}`}>
                 <Text className={`${styles.title}`}>Episode {episode.episode}</Text>
                 <Text className={`${styles.title}`}>{formatDuration(episode.duration)}</Text>

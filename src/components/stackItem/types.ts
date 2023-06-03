@@ -1,5 +1,4 @@
-import { Copy } from 'src/types';
-
-export type StackItemProps = Copy<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+export type StackItemProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
 >;

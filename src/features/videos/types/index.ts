@@ -1,6 +1,6 @@
 import { File } from 'src/types';
 
-export interface Video {
+export interface IVideo {
   _id: string;
   isPublic: boolean;
   title: string;
@@ -15,21 +15,21 @@ export interface Video {
   specialExpire: Date;
   triler: string;
   video?: string;
-  mainCategory: Category;
-  categories: Category[];
-  actors: Person[];
-  directors: Person[];
-  writers: Person[];
-  seasons?: Season[];
+  mainCategory: ICategory;
+  categories: ICategory[];
+  actors: IPerson[];
+  directors: IPerson[];
+  writers: IPerson[];
+  seasons?: ISeason[];
 }
 
-export interface Season {
+export interface ISeason {
   _id: string;
   season: number;
-  episodes: Episode[];
+  episodes: IEpisode[];
 }
 
-export interface Episode {
+export interface IEpisode {
   _id: string;
   episode: number;
   duration: number;
@@ -37,32 +37,32 @@ export interface Episode {
   image: File;
 }
 
-export interface Category {
+export interface ICategory {
   _id: string;
   title: string;
 }
 
-export interface Person {
+export interface IPerson {
   _id: string;
   name: string;
   image: File;
   roles: string[];
 }
 
-export type SpecialVideo = Pick<Video, '_id' | 'title' | 'description' | 'stars' | 'cover'>;
+export type TSpecialVideo = Pick<IVideo, '_id' | 'title' | 'description' | 'stars' | 'cover'>;
 
-export type VideoItem = Pick<
-  Video,
+export type TVideoItem = Pick<
+  IVideo,
   '_id' | 'poster' | 'title' | 'stars' | 'mainCategory' | 'releaseDate'
 >;
 
-export interface Group {
+export interface IGroup {
   _id: string;
   title: string;
-  videos: VideoItem[];
+  videos: TVideoItem[];
 }
 
-export interface History {
+export interface IHistory {
   _id: string;
   watchList: boolean;
   favorite: boolean;

@@ -1,7 +1,7 @@
-import { Episode } from '../../types';
+import { IEpisode } from '../../types';
 
 export type EpisodesProps = {
-  episodes: Episode[];
+  episodes: IEpisode[];
   className?: string;
   style?: React.CSSProperties;
 };

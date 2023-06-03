@@ -10,14 +10,12 @@
 }
 
 :root {
-  font-size: calc(1vw + 0.6em);
-
   @include max-w-xs() {
-    font-size: calc(1vw + 0.7em);
+    font-size: calc(1vw + 11px);
   }
 
   @include min-w-md() {
-    font-size: 1em;
+    font-size: 16px;
   }
 }
 
@@ -25,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @extend .customScrollbar;
+  min-width: 340px;
 }
 
 .bg-dark-100 {

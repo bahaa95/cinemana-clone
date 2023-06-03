@@ -1,9 +1,7 @@
 import { Select as ChakraSelect } from '@chakra-ui/react';
 import { SelectProps } from './types';
 
-export const Select = (props: SelectProps) => {
-  const { children, className, ...otherProps } = props;
-
+export const Select: React.FC<SelectProps> = ({ children, className, ...otherProps }) => {
   return (
     <ChakraSelect
       className={`text-gray ${className || ''}`}

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import {
-  Box,
   Helmet,
   Main,
   MainLayout,
@@ -14,7 +13,7 @@ import { useGetFavorites } from '../../api';
 import { VideoList } from '../../components';
 import styles from './Favorites.module.scss';
 
-export const Favorites = () => {
+export const Favorites: React.FC = () => {
   const { auth } = useAuth();
 
   const favoritesQuery = useGetFavorites({
@@ -40,13 +39,13 @@ export const Favorites = () => {
         <PrivateContent>
           <Main className={`relative bg-dark-200 min-h-full ${styles.favorites}`}>
             <Section>
-              <Box>
+              <>
                 {favoritesQuery.data && favoritesQuery.data.length > 0 ? (
                   <VideoList videos={favoritesQuery.data || []} />
                 ) : (
                   <NoContent title="Your favorite list is empty." />
                 )}
-              </Box>
+              </>
             </Section>
           </Main>
         </PrivateContent>

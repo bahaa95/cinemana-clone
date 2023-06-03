@@ -4,7 +4,7 @@ import { Group } from '../../components/group';
 import { SpecialVideos } from '../../components/specialVideos';
 import styles from './Home.module.scss';
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const specialVideosQuery = useGetSpecialVideos();
   const groupsQuery = useGetGroups();
 

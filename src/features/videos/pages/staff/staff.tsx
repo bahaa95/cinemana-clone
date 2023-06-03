@@ -15,7 +15,7 @@ import { useGetPerson } from '../../api';
 import { VideoList } from '../../components/videoList';
 import styles from './Staff.module.scss';
 
-export const Staff = () => {
+export const Staff: React.FC = () => {
   const params = useParams<{ _id: string }>();
   const { data: person, ...personQuery } = useGetPerson({ _id: params._id as string });
 
@@ -36,32 +36,26 @@ export const Staff = () => {
       ) : (
         <Main className={`bg-dark-200 ${styles.staff}`}>
           <Section className={`${styles.section}`}>
-            <Box>
-              <Stack direction={'row'} align={'center'}>
-                {/* person image */}
-                <StackItem>
-                  <Box className={`${styles.imageContainer}`}>
-                    <Image
-                      className={`${styles.image}`}
-                      src={person?.image?.url}
-                      alt={person?.name}
-                    />
-                  </Box>
-                </StackItem>
-                {/* person name */}
-                <StackItem>
-                  <Box>
-                    <h2 className={`text-white capitalize ${styles.name}`}>{person?.name}</h2>
-                  </Box>
-                </StackItem>
-              </Stack>
-            </Box>
+            <Stack direction={'row'} align={'center'}>
+              {/* person image */}
+              <StackItem>
+                <Box className={`${styles.imageContainer}`}>
+                  <Image
+                    className={`${styles.image}`}
+                    src={person?.image?.url}
+                    alt={person?.name}
+                  />
+                </Box>
+              </StackItem>
+              {/* person name */}
+              <StackItem>
+                <h2 className={`text-white capitalize ${styles.name}`}>{person?.name}</h2>
+              </StackItem>
+            </Stack>
           </Section>
           <Section className={`${styles.section}`}>
-            <Box>
-              {/* person videos */}
-              <VideoList videos={person?.videos || []} />
-            </Box>
+            {/* person videos */}
+            <VideoList videos={person?.videos || []} />
           </Section>
         </Main>
       )}

@@ -1,7 +1,10 @@
-import { VideoItem } from '../../types';
+import { BoxProps } from 'src/components';
+import { Combine } from 'src/types';
+import { TVideoItem } from '../../types';
 
-export type VideoCardProps = {
-  video: VideoItem;
-  className?: string;
-  style?: React.CSSProperties;
-};
+export type VideoCardProps = Combine<
+  {
+    video: TVideoItem;
+  },
+  Omit<BoxProps, 'children'>
+>;

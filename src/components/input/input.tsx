@@ -2,8 +2,14 @@ import { FieldWrapper } from '../fieldWrapper';
 import styles from './Input.module.scss';
 import { InputFieldProps } from './types';
 
-export const Input = (props: InputFieldProps) => {
-  const { type = 'text', registration, className, label, error, ...otherProps } = props;
+export const Input: React.FC<InputFieldProps> = ({
+  type = 'text',
+  registration,
+  className,
+  label,
+  error,
+  ...otherProps
+}) => {
   return (
     <FieldWrapper label={label} error={error}>
       <input

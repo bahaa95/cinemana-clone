@@ -1,21 +1,10 @@
 import { useParams } from 'react-router-dom';
-import {
-  Box,
-  Helmet,
-  Main,
-  MainLayout,
-  Section,
-  Stack,
-  StackItem,
-  Text,
-  Loader,
-  NoContent,
-} from 'src/components';
+import { Helmet, Main, MainLayout, Section, Text, Loader, NoContent, Box } from 'src/components';
 import { useGetGroup } from '../../api';
 import { VideoList } from '../../components';
 import styles from './Group.module.scss';
 
-export const Group = () => {
+export const Group: React.FC = () => {
   const params = useParams<{ _id: string }>();
   const groupQuery = useGetGroup({ groupId: params._id as string });
 
@@ -36,17 +25,11 @@ export const Group = () => {
       ) : (
         <Main className={`${styles.group}`}>
           <Section>
-            <Box>
-              <Stack>
-                <StackItem>
-                  <Text className={`text-white capitalize ${styles.title}`}>
-                    {groupQuery.data?.title}
-                  </Text>
-                </StackItem>
-                <StackItem>
-                  <VideoList videos={groupQuery.data?.videos || []} />
-                </StackItem>
-              </Stack>
+            <Box className={`flex flex-col`}>
+              <Text className={`text-white capitalize ${styles.title}`}>
+                {groupQuery.data?.title}
+              </Text>
+              <VideoList videos={groupQuery.data?.videos || []} />
             </Box>
           </Section>
         </Main>

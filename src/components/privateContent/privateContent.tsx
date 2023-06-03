@@ -4,9 +4,7 @@ import { useAuth } from 'src/lib/auth';
 import styles from './PrivateContent.module.scss';
 import { PrivateContentProps } from './types';
 
-export const PrivateContent = (props: PrivateContentProps) => {
-  const { children, className, ...otherProps } = props;
-
+export const PrivateContent: React.FC<PrivateContentProps> = ({ children }) => {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
@@ -16,7 +14,7 @@ export const PrivateContent = (props: PrivateContentProps) => {
   }
 
   return (
-    <Box {...otherProps} className={`${styles.privateContent} ${className || ''}`}>
+    <Box className={`${styles.privateContent}`}>
       <Stack direction={'column'} alignItems={'center'} spacing={'1em'}>
         {/* image */}
         <StackItem>

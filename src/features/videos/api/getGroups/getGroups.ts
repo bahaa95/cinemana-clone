@@ -1,7 +1,7 @@
 import { axios } from 'src/lib/axios';
-import { Group } from '../../types';
+import { IGroup } from '../../types';
 
-export const getGroup = async (): Promise<Group[]> => {
-  const response = await axios.get<Group[]>('/groups');
+export const getGroup = async (): Promise<IGroup[]> => {
+  const response = await axios.get<IGroup[]>('/groups');
   return response.data;
 };

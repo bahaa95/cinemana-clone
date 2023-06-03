@@ -10,8 +10,7 @@ import {
 import { Text } from 'src/components';
 import { CloneWarningProps } from './types';
 
-export const CloneWarning = (props: CloneWarningProps) => {
-  const { isOpen, handleClose } = props;
+export const CloneWarning: React.FC<CloneWarningProps> = ({ isOpen, handleClose }) => {
   return (
     <>
       <Modal
@@ -30,7 +29,6 @@ export const CloneWarning = (props: CloneWarningProps) => {
               built this clone to test my skills in web development. Thanks for visited it :)
             </Text>
           </ModalBody>
-
           <ModalFooter>
             <Button onClick={handleClose}>Ok</Button>
           </ModalFooter>

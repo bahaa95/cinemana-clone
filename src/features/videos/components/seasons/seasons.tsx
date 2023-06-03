@@ -2,9 +2,7 @@ import { Box, Tabs, Tab, TabList, TabPanels, TabPanel, Text } from 'src/componen
 import { Episodes } from '../episodes';
 import { SeasonsProps } from './types';
 
-export const Seasons = (props: SeasonsProps) => {
-  const { seasons, ...otherProps } = props;
-
+export const Seasons: React.FC<SeasonsProps> = ({ seasons, ...otherProps }) => {
   return (
     <Box {...otherProps}>
       <Tabs>
@@ -18,9 +16,7 @@ export const Seasons = (props: SeasonsProps) => {
         <TabPanels>
           {seasons.map((season) => (
             <TabPanel key={season._id}>
-              <Box>
-                <Episodes episodes={season.episodes} />
-              </Box>
+              <Episodes episodes={season.episodes} />
             </TabPanel>
           ))}
         </TabPanels>

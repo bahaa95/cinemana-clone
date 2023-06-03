@@ -2,7 +2,7 @@ import { Rating as ReactRating } from 'react-simple-star-rating';
 import styles from './Rating.module.scss';
 import { RatingProps } from './types';
 
-export const Rating = (props: RatingProps) => {
+export const Rating: React.FC<RatingProps> = (props) => {
   return (
     <ReactRating
       className={`flex ${styles.rating}`}

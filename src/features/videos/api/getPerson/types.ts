@@ -1,3 +1,3 @@
-import { Person as IPerson, VideoItem } from '../../types';
+import { IPerson as IPerson, TVideoItem } from '../../types';
 
-export type Person = IPerson & { videos: VideoItem[] };
+export type Person = IPerson & { videos: TVideoItem[] };

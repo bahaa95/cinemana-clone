@@ -26,14 +26,14 @@ import {
   Staff,
   StaffNameList,
   Watch,
-  WatchListButton,
+  AddToWatchList,
   FavoriteButton,
   Recomodation,
 } from '../../components';
 import { getYear } from '../../utils';
 import styles from './Video.module.scss';
 
-export const Video = () => {
+export const Video: React.FC = () => {
   const { _id } = useParams<{ _id: string }>();
   const { auth } = useAuth();
   const privateAction = usePrivateAction();
@@ -117,98 +117,82 @@ export const Video = () => {
                 ) : null}
               </Box>
               {/* info */}
-              <Box className={`${styles.detailes}`}>
-                <Stack direction={'column'} spacing={'0em'}>
-                  {/* title */}
-                  <StackItem>
-                    <Box>
-                      <h2 className={`text-white ${styles.title}`}>{data?.video?.title}</h2>
-                    </Box>
-                  </StackItem>
-                  {/* IMDB */}
-                  <StackItem>
-                    <IMDB stars={data?.video?.stars || 0} />
-                  </StackItem>
-                  {/* year and categories */}
-                  <StackItem>
-                    <Box className={`flex justify-start alaign-center`}>
-                      {/* year */}
-                      <Box className={`text-gray ${styles.year}`}>
-                        <Text>{getYear(data?.video?.releaseDate as Date)}</Text>
-                      </Box>
-                      {/* categories */}
-                      <Box className={`${styles.categories}`}>
-                        <Stack direction={'row'} spacing={'0.3em'} className={`text-gray`}>
-                          {data?.video?.categories.map((category) => (
-                            <StackItem
-                              key={category._id}
-                              className={`capitalize ${styles.category}`}
-                            >
-                              <Link
-                                to={`/search?type=${data?.video?.type}&category=${category._id}`}
-                                className={`pointer`}
-                              >
-                                {category.title}
-                              </Link>
-                            </StackItem>
-                          ))}
-                        </Stack>
-                      </Box>
-                    </Box>
-                  </StackItem>
-                  {/* actions */}
-                  <StackItem>
-                    <Box className={`${styles.actions}`}>
-                      <Stack direction={'row'} spacing={'1em'}>
-                        {/* triler */}
-                        <StackItem>
-                          <OuterLink
-                            href={data?.video?.triler}
-                            className={`text-white flex alaign-center ${styles.actionButton}`}
-                          >
-                            <BsYoutube />
-                            <Text>Triler</Text>
-                          </OuterLink>
-                        </StackItem>
-                        {/* Favorites */}
-                        <StackItem>
-                          <FavoriteButton
-                            isFavorite={historyQuery.data?.favorite}
-                            onClick={() => privateAction(handleEditFavorite)}
-                          />
-                        </StackItem>
-                        {/* watch list */}
-                        <StackItem>
-                          <WatchListButton onClick={() => privateAction(handleEditWatchList)} />
-                        </StackItem>
-                      </Stack>
-                    </Box>
-                  </StackItem>
-                  {/* description */}
-                  <StackItem>
-                    <Text className={`text-white ${styles.description}`}>
-                      {data?.video?.description}
+              <Stack direction={'column'} spacing={'0em'} className={`${styles.detailes}`}>
+                {/* title */}
+                <StackItem>
+                  <h2 className={`text-white ${styles.title}`}>{data?.video?.title}</h2>
+                </StackItem>
+                {/* IMDB */}
+                <StackItem>
+                  <IMDB stars={data?.video?.stars || 0} />
+                </StackItem>
+                {/* year and categories */}
+                <StackItem>
+                  <Box className={`flex justify-start alaign-center`}>
+                    {/* year */}
+                    <Text className={`text-gray ${styles.year}`}>
+                      {getYear(data?.video?.releaseDate as Date)}
                     </Text>
-                  </StackItem>
-                  {/* staff */}
-                  <StackItem>
-                    <Stack direction={'column'} spacing={'0em'}>
-                      {/* directors */}
-                      <StackItem>
-                        <StaffNameList title="directors" staff={data?.video?.directors || []} />
-                      </StackItem>
-                      {/* writers */}
-                      <StackItem>
-                        <StaffNameList title="writers" staff={data?.video?.writers || []} />
-                      </StackItem>
-                      {/* actors */}
-                      <StackItem>
-                        <StaffNameList title="actors" staff={data?.video?.actors || []} />
-                      </StackItem>
+                    {/* categories */}
+                    <Stack
+                      direction={'row'}
+                      spacing={'0.3em'}
+                      className={`text-gray ${styles.categories}`}
+                    >
+                      {data?.video?.categories.map((category) => (
+                        <StackItem key={category._id} className={`capitalize ${styles.category}`}>
+                          <Link
+                            to={`/search?type=${data?.video?.type}&category=${category._id}`}
+                            className={`pointer`}
+                          >
+                            {category.title}
+                          </Link>
+                        </StackItem>
+                      ))}
                     </Stack>
-                  </StackItem>
-                </Stack>
-              </Box>
+                  </Box>
+                </StackItem>
+                {/* actions */}
+                <StackItem>
+                  <Stack direction={'row'} spacing={'1em'} className={`${styles.actions}`}>
+                    {/* triler */}
+                    <StackItem>
+                      <OuterLink
+                        href={data?.video?.triler}
+                        className={`text-white flex alaign-center ${styles.actionButton}`}
+                      >
+                        <BsYoutube />
+                        <Text>Triler</Text>
+                      </OuterLink>
+                    </StackItem>
+                    {/* Favorites */}
+                    <StackItem>
+                      <FavoriteButton
+                        isFavorite={historyQuery.data?.favorite}
+                        onClick={() => privateAction(handleEditFavorite)}
+                      />
+                    </StackItem>
+                    {/* watch list */}
+                    <StackItem>
+                      <AddToWatchList onClick={() => privateAction(handleEditWatchList)} />
+                    </StackItem>
+                  </Stack>
+                </StackItem>
+                {/* description */}
+                <StackItem>
+                  <Text className={`text-white ${styles.description}`}>
+                    {data?.video?.description}
+                  </Text>
+                </StackItem>
+                {/* staff */}
+                <StackItem>
+                  <Box className={`flex flex-col`}>
+                    <StaffNameList title="directors" staff={data?.video?.directors || []} />
+                    <StaffNameList title="writers" staff={data?.video?.writers || []} />
+                    <StaffNameList title="actors" staff={data?.video?.actors || []} />
+                  </Box>
+                </StackItem>
+              </Stack>
             </Box>
           </Section>
           {/* seasons and episodes */}

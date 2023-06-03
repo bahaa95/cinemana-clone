@@ -3,9 +3,7 @@ import { Box, Button, Text } from 'src/components';
 import { WatchProps } from './types';
 import styles from './Watch.module.scss';
 
-export const Watch = (props: WatchProps) => {
-  const { className, ...otherProps } = props;
-
+export const Watch: React.FC<WatchProps> = ({ className, ...otherProps }) => {
   return (
     <Button className={`${styles.watch} ${className || ''}`} {...otherProps}>
       <Box className={`text-white flex alaign-center`}>

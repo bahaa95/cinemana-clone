@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { useAxiosPrivate } from 'src/lib/axios';
 import { QueryConfig } from 'src/lib/react-query';
-import { VideoItem } from '../../types';
+import { TVideoItem } from '../../types';
 
-type GetWatchList = () => Promise<VideoItem[]>;
+type GetWatchList = () => Promise<TVideoItem[]>;
 
 interface UseGetWatchListOptions {
   config?: QueryConfig<GetWatchList>;
@@ -14,7 +14,7 @@ export const useGetWatchList = (options: UseGetWatchListOptions = {}) => {
   const axios = useAxiosPrivate();
 
   const getWatchList: GetWatchList = async () => {
-    const response = await axios.get<VideoItem[]>('/history/watchList');
+    const response = await axios.get<TVideoItem[]>('/history/watchList');
     return response.data;
   };
 

@@ -1,7 +1,7 @@
 import { OuterLink, Text } from 'src/components';
 import styles from './Footer.module.scss';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <OuterLink
       href="https://bahaa-adel.vercel.app/"

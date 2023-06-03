@@ -1,6 +1,5 @@
-type Props = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+import { MainProps } from './types';
 
-export const Main = (props: Props) => {
-  const { children, ...otherProps } = props;
+export const Main: React.FC<MainProps> = ({ children, ...otherProps }) => {
   return <main {...otherProps}>{children}</main>;
 };

@@ -21,7 +21,7 @@ import { VideoList } from '../../components/videoList';
 import { serializeFormQuery } from '../../utils';
 import styles from './Search.module.scss';
 
-export const Search = () => {
+export const Search: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const [title, setTitle] = useState(searchParams.get('title'));
@@ -60,63 +60,53 @@ export const Search = () => {
       ) : (
         <Main className={`min-h-screen bg-dark-200 ${styles.search}`}>
           <Section>
-            <Box>
-              <Stack>
-                {/* filters */}
-                <StackItem>
-                  <Box className={`noselect ${styles.filters}`}>
-                    <Wrap spacing={'1.5em'}>
-                      {/* type switch */}
-                      <WrapItem>
-                        <TypeSwitch
-                          defaultType={type as 'movie' | 'series'}
-                          onChange={(type) => setType(type)}
+            <Stack>
+              {/* filters */}
+              <StackItem>
+                <Box className={`noselect ${styles.filters}`}>
+                  <Wrap spacing={'1.5em'}>
+                    {/* type switch */}
+                    <WrapItem>
+                      <TypeSwitch
+                        defaultType={type as 'movie' | 'series'}
+                        onChange={(type) => setType(type as string)}
+                      />
+                    </WrapItem>
+                    {/* categories */}
+                    <WrapItem>
+                      <Select
+                        placeholder="All"
+                        value={category || undefined}
+                        onChange={(e) => setCategory(e.target.value)}
+                      >
+                        {categoriesQuery?.data?.map((category) => (
+                          <option key={category._id} value={category._id} className={`capitalize`}>
+                            {category.title}
+                          </option>
+                        ))}
+                      </Select>
+                    </WrapItem>
+                    {/* stars */}
+                    <WrapItem>
+                      <Box className={`bg-dark-100 ${styles.stars}`}>
+                        <Rating
+                          onClick={(value) => setStars(value.toString())}
+                          initialValue={stars ? Number(stars) : 0}
                         />
-                      </WrapItem>
-                      {/* categories */}
-                      <WrapItem>
-                        <Box>
-                          <Select
-                            placeholder="All"
-                            value={category || undefined}
-                            onChange={(e) => setCategory(e.target.value)}
-                          >
-                            {categoriesQuery?.data?.map((category) => (
-                              <option
-                                key={category._id}
-                                value={category._id}
-                                className={`capitalize`}
-                              >
-                                {category.title}
-                              </option>
-                            ))}
-                          </Select>
-                        </Box>
-                      </WrapItem>
-                      {/* stars */}
-                      <WrapItem>
-                        <Box className={`bg-dark-100 ${styles.stars}`}>
-                          <Rating
-                            onClick={(value) => setStars(value.toString())}
-                            initialValue={stars ? Number(stars) : 0}
-                          />
-                        </Box>
-                      </WrapItem>
-                    </Wrap>
-                  </Box>
-                </StackItem>
-                {/* video list */}
-                <StackItem>
-                  <Box>
-                    {searchQuery.data && searchQuery.data.length > 0 ? (
-                      <VideoList videos={searchQuery.data} />
-                    ) : (
-                      <NoContent title="There is no content found related to search." />
-                    )}
-                  </Box>
-                </StackItem>
-              </Stack>
-            </Box>
+                      </Box>
+                    </WrapItem>
+                  </Wrap>
+                </Box>
+              </StackItem>
+              {/* video list */}
+              <StackItem>
+                {searchQuery.data && searchQuery.data.length > 0 ? (
+                  <VideoList videos={searchQuery.data} />
+                ) : (
+                  <NoContent title="There is no content found related to search." />
+                )}
+              </StackItem>
+            </Stack>
           </Section>
         </Main>
       )}

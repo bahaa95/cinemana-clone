@@ -1,0 +1,19 @@
+@import 'src/lib/styles/color.scss';
+@import 'src/lib/styles/fonts.scss';
+
+.release {
+  font-family: $source_sans_pro;
+  line-height: 1em;
+  padding-left: 0.3em;
+  margin-bottom: 0.5em;
+
+  &::after {
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $red;
+  }
+}

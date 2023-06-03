@@ -5,7 +5,8 @@ export const useCloneWarning = () => {
 
   const handleOpen = () => {
     const firstVisitData = localStorage.getItem('firstVisit');
-    const isFirstVisit = firstVisitData ? JSON.parse(firstVisitData) : true;
+    const isFirstVisit =
+      firstVisitData && typeof Boolean('true') === 'boolean' ? Boolean('true') : true;
 
     if (isFirstVisit) {
       onOpen();

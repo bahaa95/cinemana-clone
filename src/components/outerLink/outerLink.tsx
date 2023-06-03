@@ -1,6 +1,5 @@
 import { OuterLinkProps } from './types';
 
-export const OuterLink = (props: OuterLinkProps) => {
-  const { children, ...otherProps } = props;
+export const OuterLink: React.FC<OuterLinkProps> = ({ children, ...otherProps }) => {
   return <a {...otherProps}>{children}</a>;
 };

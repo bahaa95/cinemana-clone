@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useAxiosPrivate } from 'src/lib/axios';
 import { notify } from 'src/lib/notify';
 import { MutationConfig } from 'src/lib/react-query';
-import { History } from '../../types';
+import { IHistory } from '../../types';
 
-type Args = { videoId: string; favorite: History['favorite'] };
-type EditFavorite = (args: Args) => Promise<History>;
+type Args = { videoId: string; favorite: IHistory['favorite'] };
+type EditFavorite = (args: Args) => Promise<IHistory>;
 
 interface UseEditHistory {
   videoId: string;
@@ -18,7 +18,7 @@ export const useEditFavorite = (options: UseEditHistory) => {
   const axios = useAxiosPrivate();
 
   const editFavorite: EditFavorite = async (args) => {
-    const response = await axios.patch<History>(`/history?videoId=${args.videoId}`, {
+    const response = await axios.patch<IHistory>(`/history?videoId=${args.videoId}`, {
       favorite: args.favorite,
     });
     return response.data;

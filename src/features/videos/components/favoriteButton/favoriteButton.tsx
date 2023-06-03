@@ -1,21 +1,22 @@
 import { FaHeart } from 'react-icons/fa';
-import { Stack, StackItem, Text } from 'src/components';
+import { Box, Text } from 'src/components';
 import styles from './AddToFavorite.module.scss';
 import { FavoriteButtonProps } from './types';
 
-export const FavoriteButton = (props: FavoriteButtonProps) => {
-  const { isFavorite, className, ...otherProps } = props;
-
+export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
+  isFavorite,
+  className,
+  ...otherProps
+}) => {
   return (
     <button {...otherProps} className={`text-white ${styles.button} ${className || ''}`}>
-      <Stack direction={'row'} alignItems={'center'} spacing={'.2em'}>
-        <StackItem>
-          <FaHeart className={`${isFavorite ? styles.favorite : ''}`} />
-        </StackItem>
-        <StackItem>
-          <Text>Favorites</Text>
-        </StackItem>
-      </Stack>
+      <Box className={`flex alaign-center`}>
+        <FaHeart
+          className={`${isFavorite ? styles.favorite : ''}`}
+          style={{ marginRight: '.25em' }}
+        />
+        <Text>Favorites</Text>
+      </Box>
     </button>
   );
 };

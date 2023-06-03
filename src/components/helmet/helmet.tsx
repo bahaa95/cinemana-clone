@@ -4,7 +4,7 @@ type Props = {
   title: string;
 };
 
-export const Helmet = ({ title }: Props) => {
+export const Helmet: React.FC<Props> = ({ title }) => {
   return (
     <ReactHelmet>
       <meta charSet="utf-8" />

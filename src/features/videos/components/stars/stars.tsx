@@ -1,20 +1,13 @@
 import { AiFillStar } from 'react-icons/ai';
 import { Box, Text } from 'src/components';
 import styles from './Stars.module.scss';
+import { StarsProps } from './types';
 
-type Props = {
-  stars: number;
-};
-
-export const Stars = (props: Props) => {
-  const { stars } = props;
-
+export const Stars: React.FC<StarsProps> = ({ stars = 0, className, ...props }) => {
   return (
-    <Box className={`inline-block ${styles.stars}`}>
-      <Box className={`flex alaign-center`}>
-        <AiFillStar />
-        <Text>{stars}</Text>
-      </Box>
+    <Box className={`flex alaign-center text-white ${styles.stars} ${className || ''}`} {...props}>
+      <AiFillStar />
+      <Text>{stars}</Text>
     </Box>
   );
 };

@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { useAxiosPrivate } from 'src/lib/axios';
 import { QueryConfig } from 'src/lib/react-query';
-import { History } from '../../types';
+import { IHistory } from '../../types';
 
-type GetHistory = (videoId: string) => Promise<History>;
+type GetHistory = (videoId: string) => Promise<IHistory>;
 
 interface UseGetHistoryOptions {
   videoId: string;

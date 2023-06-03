@@ -1,7 +1,5 @@
 import { NavProps } from './types';
 
-export const Nav = (props: NavProps) => {
-  const { children, ...otherProps } = props;
-
+export const Nav: React.FC<NavProps> = ({ children, ...otherProps }) => {
   return <nav {...otherProps}>{children}</nav>;
 };

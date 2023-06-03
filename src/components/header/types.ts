@@ -1,5 +1,1 @@
-import { Copy } from 'src/types';
-
-export type HeaderProps = Copy<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
->;
+export type HeaderProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;

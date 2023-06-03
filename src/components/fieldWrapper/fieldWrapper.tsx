@@ -1,7 +1,12 @@
 import styles from './FieldWrapper.module.scss';
 import { FieldWrapperProps } from './types';
 
-export const FieldWrapper = ({ children, label, error, className }: FieldWrapperProps) => {
+export const FieldWrapper: React.FC<FieldWrapperProps> = ({
+  children,
+  label,
+  error,
+  className,
+}) => {
   return (
     <div className={`w-full text-base flex flex-col ${styles.fieldWrapper} ${className || ''}`}>
       <label className="text-sm capitalize">

@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useAxiosPrivate } from 'src/lib/axios';
 import { notify } from 'src/lib/notify';
 import { MutationConfig } from 'src/lib/react-query';
-import { History } from '../../types';
+import { IHistory } from '../../types';
 
-type Args = { videoId: string; watchList: History['watchList'] };
-type EditWatchList = (args: Args) => Promise<History>;
+type Args = { videoId: string; watchList: IHistory['watchList'] };
+type EditWatchList = (args: Args) => Promise<IHistory>;
 
 interface UseEditWatchList {
   videoId: string;
@@ -19,7 +19,7 @@ export const useEditWatchList = (options: UseEditWatchList) => {
 
   // edit watchList api
   const editWatchList: EditWatchList = async ({ videoId, watchList }) => {
-    const response = await axios.patch<History>(`/history?videoId=${videoId}`, {
+    const response = await axios.patch<IHistory>(`/history?videoId=${videoId}`, {
       watchList,
     });
     return response.data;

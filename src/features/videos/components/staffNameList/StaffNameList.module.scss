@@ -9,6 +9,11 @@
   @include min-w-md() {
     font-size: 0.9rem;
   }
+
+  &::after {
+    content: ':';
+    padding: 0em 0.2em 0em 0.1em;
+  }
 }
 
 .name {

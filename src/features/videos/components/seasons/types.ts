@@ -1,7 +1,5 @@
-import { Season } from '../../types';
+import { BoxProps } from 'src/components';
+import { Combine } from 'src/types';
+import { ISeason } from '../../types';
 
-export type SeasonsProps = {
-  seasons: Season[];
-  className?: string;
-  style?: React.CSSProperties;
-};
+export type SeasonsProps = Combine<{ seasons: ISeason[] }, Omit<BoxProps, 'children'>>;

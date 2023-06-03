@@ -1,5 +1,5 @@
 import { BoxProps } from 'src/components';
-import { Copy, Combine } from 'src/types';
-import { VideoItem } from '../../types';
+import { Combine } from 'src/types';
+import { TVideoItem } from '../../types';
 
-export type RecomodationProps = Copy<Combine<{ videos: VideoItem[] }, BoxProps>>;
+export type RecomodationProps = Combine<{ videos: TVideoItem[] }, Omit<BoxProps, 'children'>>;

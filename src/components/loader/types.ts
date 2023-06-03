@@ -1,3 +1,3 @@
-export type LoaderProps = {
-  className?: string;
-};
+import { BoxProps } from '..';
+
+export type LoaderProps = Omit<BoxProps, 'children'>;

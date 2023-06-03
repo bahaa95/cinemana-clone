@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import {
-  Box,
   Helmet,
   Main,
   MainLayout,
@@ -14,7 +13,7 @@ import { useGetWatchList } from '../../api';
 import { VideoList } from '../../components';
 import styles from './WatchList.module.scss';
 
-export const WatchList = () => {
+export const WatchList: React.FC = () => {
   const { auth } = useAuth();
 
   const watchListQuery = useGetWatchList({
@@ -40,13 +39,13 @@ export const WatchList = () => {
         <PrivateContent>
           <Main className={`relative bg-dark-200 min-h-full ${styles.watchList}`}>
             <Section>
-              <Box>
+              <>
                 {watchListQuery.data && watchListQuery.data?.length > 0 ? (
                   <VideoList videos={watchListQuery.data} />
                 ) : (
                   <NoContent title="Your watchlist is empty." />
                 )}
-              </Box>
+              </>
             </Section>
           </Main>
         </PrivateContent>

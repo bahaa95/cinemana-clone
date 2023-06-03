@@ -1,8 +1,6 @@
 import { TabList as ChakraTabList } from '@chakra-ui/react';
 import { TabListProps } from './types';
 
-export const TabList = (props: TabListProps) => {
-  const { children, ...otherProps } = props;
-
+export const TabList: React.FC<TabListProps> = ({ children, ...otherProps }) => {
   return <ChakraTabList {...otherProps}>{children}</ChakraTabList>;
 };

@@ -1,7 +1,7 @@
 import { axios } from 'src/lib/axios';
-import { Category } from '../../types';
+import { ICategory } from '../../types';
 
-export const getCategories = async (): Promise<Category[]> => {
-  const response = await axios.get<Category[]>('/categories');
+export const getCategories = async (): Promise<ICategory[]> => {
+  const response = await axios.get<ICategory[]>('/categories');
   return response.data;
 };

@@ -6,11 +6,9 @@ import { Box } from 'src/components';
 import { VideoCard } from '../videoCard';
 import { VideosProps } from './types';
 
-export const Videos = (props: VideosProps) => {
-  const { videos, className, ...otherProps } = props;
-
+export const Videos: React.FC<VideosProps> = ({ videos, ...otherProps }) => {
   return (
-    <Box className={`${className || ''}`} {...otherProps}>
+    <Box {...otherProps}>
       <Swiper
         slidesPerView="auto"
         spaceBetween={20}
